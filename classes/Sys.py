@@ -1,18 +1,14 @@
-from . import Interaction
-from .Room import Room
-from .SimpleInteraction import SimpleInteraction
-from .Weapon import Weapon
 from resources.lang import sys_constants
-
+from . import Interaction
+from resources.rooms import rooms
 
 class Sys(Interaction.Interaction):
-    sysob = None
 
     def __init__(self):
         super().__init__()
         self.player = []
-        self.rooms = [Room([SimpleInteraction("e"),
-               SimpleInteraction("You got stuff hehe", "", lambda: (Sys.sysob.player.append(Weapon("Weapon 1", 1, 5)), Sys.sysob.player.append(Weapon("Weapon 2", 2, 7))))], "stay")]
+        self.player_data = {}
+        self.rooms = rooms
         self.room = 0
 
     def act(self):
@@ -30,8 +26,3 @@ class Sys(Interaction.Interaction):
                             self.rooms[self.room].act_after()
                         case "i":
                             print(" | ".join(str(obj) for obj in self.player))
-
-    @classmethod
-    def start_game(cls):
-        cls.sysob = Sys()
-        cls.sysob.act()

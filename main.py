@@ -1,3 +1,5 @@
 from classes.Sys import Sys
+from GameInstance import GameInstance
 
-Sys.start_game()
+GameInstance(Sys())
+GameInstance().act()
