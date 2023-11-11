@@ -30,12 +30,7 @@ def update_text_in_place(text, screentime = 0.0001):
     time.sleep(screentime)  # You can adjust the delay as needed
     print('\r' + ' ' * len(text) + '\r', end='', flush=True)
 
-if __name__ == "__main__":
-    from classes.Fight import Enemy
-    Enemy.module_test()
-
-
-def balls():
+def attack():
     base = ' ' * 100
     winpos = randint(1, 100)
     base = base[:winpos - 1] + '#' + base[winpos:]
@@ -46,7 +41,7 @@ def balls():
 
         print(base, end='', flush=True)
         if get_input_with_timeout(0.02):
-            print("\nGG:", count_spaces(base))
+            return count_spaces(base)
             break
         print('\r' + ' ' * len(base) + '\r', end='', flush=True)
 
@@ -59,7 +54,7 @@ def balls():
 
         print(base, end='', flush=True)
         if get_input_with_timeout(0.02):
-            print("\nGG:", count_spaces(base) * 2  )
+            return count_spaces(base) * 2
             break
         print('\r' + ' ' * len(base) + '\r', end='', flush=True)
 
@@ -68,5 +63,4 @@ def balls():
         else:
             base = base[:i - 1] + '#' + base[i:]
 
-    time.sleep(1)
-    input()
+    return 200

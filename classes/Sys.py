@@ -2,6 +2,7 @@ from . import Interaction
 from .Room import Room
 from .SimpleInteraction import SimpleInteraction
 from .Weapon import Weapon
+from resources.lang import sys_constants
 
 
 class Sys(Interaction.Interaction):
@@ -21,7 +22,7 @@ class Sys(Interaction.Interaction):
             else:
                 action = None
                 while action != "c":
-                    action = input("[c]ontiune to the next room | inter[a]ct with things in the room again | see [i]nventory> ")
+                    action = input(sys_constants.prompt)
                     match action:
                         case "c":
                             self.room += 1

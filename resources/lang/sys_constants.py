@@ -1,0 +1,1 @@
+prompt = "[c]ontiune to the next room | inter[a]ct with things in the room again | see [i]nventory> "

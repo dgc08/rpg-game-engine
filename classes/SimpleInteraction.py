@@ -1,7 +1,6 @@
 from .Interaction import Interaction
 from utils import printText
 
-
 class SimpleInteraction(Interaction):
     def __init__(self, text, textSecond = None, execute = None):
         if execute == None:
