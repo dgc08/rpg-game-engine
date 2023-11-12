@@ -4,8 +4,11 @@ from resources.lang import sys_constants
 
 
 class Weapon(Item):
-    def __init__(self, name, atk):
-        super().__init__(name)
+    def __init__(self, name, atk, where = None):
+        if where == None:
+            super().__init__(name)
+        else:
+            super().__init__(name,where)
         self.atk = atk
 
     def use(self, inventory_container):

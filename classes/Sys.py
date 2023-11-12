@@ -28,7 +28,7 @@ class Sys(Interaction.Interaction):
     def game_over(self):
         print(sys_constants.game_over)
         key = None
-        while key != "r" or "e":
+        while key != "r" and key != "e":
             key = msvcrt.getch().decode('utf-8')
 
         if key == "r":

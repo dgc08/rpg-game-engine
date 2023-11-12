@@ -36,8 +36,8 @@ class Enemy(Interaction):
         round = 0
 
         while self.player_hp >= 0 and self.hp >= 0:
-            if len(self.voicelines) != 0 and (round < len(self.voicelines) or self.loop_voicelines):
-                printText(f"{self.name}: " + self.voicelines[round % len(self.voicelines)])
+            if len(self.voicelines) != 0 and ((round < len(self.voicelines) or self.loop_voicelines)):
+                print(f"{self.name}: " + self.voicelines[round % len(self.voicelines)])
 
             # PLAYER_ATTACK
             printText(fight.your_turn.format(**vars(self)))
@@ -69,7 +69,7 @@ class Enemy(Interaction):
             if dodge_efficiency > 20:
                 enemy_dmg = self.atk
             else:
-                enemy_dmg = self.atk / (dodge_efficiency * 0.9)
+                enemy_dmg = self.atk - (1 / dodge_efficiency * self.atk)
 
             print()
             if dodge_efficiency == 1:
@@ -87,8 +87,11 @@ class Enemy(Interaction):
             round += 1
         if self.hp <= 0:
             printText(fight.you_won)
-            printText(fight.get_loot.format(**vars(self)))
+            if self.loot != []:
+                printText(fight.get_loot.format(loot=", ".join([str(i) for i in self.loot])))
             GameInstance().rooms[GameInstance().room].contents.remove(self)
+            for i in self.loot:
+                GameInstance().player_data["inventory"].append(i)
         else:
             printText(fight.you_loose)
             GameInstance().game_over()

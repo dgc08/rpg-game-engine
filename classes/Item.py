@@ -5,13 +5,17 @@ from GameInstance import GameInstance
 
 
 class Item (Interaction):
-    def __init__(self, name, where=where_default):
+    def __init__(self, name, where=where_default, gets_used = True, use_lambda = lambda: None):
         super().__init__()
+        self.use_lambda = use_lambda
+        self.gets_used = gets_used
         self.where = where
         self.name = name
 
     def use(self, inventory_container):
-        inventory_container.remove(self)
+        if self.gets_used:
+            inventory_container.remove(self)
+        self.use_lambda()
 
     def __str__(self):
         return self.name
