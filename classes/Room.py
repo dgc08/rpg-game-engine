@@ -7,9 +7,11 @@ class Room(Interaction.Interaction):
         self.to_return = to_return
 
     def act(self):
-        for i in self.contents:
+        #print(self.contents)
+        for i in self.contents.copy():
+            #print("act on", i)
             i.act()
-        return self.to_return
+        #print("done actin")
 
     def act_after(self):
         for i in self.contents:

@@ -1,3 +1,5 @@
+no_weapon = "You have no weapon equipped, please equip one in the inventory first."
+
 enemy_attacks = "{name} attacks you!\n HP: {hp} | ATK: {atk}\n"
 your_turn = "nweIt's your turn to attack!\n Enemy HP: {hp} | Your ATK: {player_atk}\n"
 enemy_turn = "nweYour enemy attacks. You'll need to dogde!\n Your HP: {player_hp} | Enemy ATK: {atk}\n"
@@ -15,4 +17,6 @@ you_fail_to_dodge = "You fail to dodge, and the enemy's attack lands perfectly, 
 player_hp = "You have {player_hp} HP\n"
 
 you_won = "You won! Your enemy lies dead on the ground."
-you_loose = "You loose."
+get_loot = "You get {loot} as loot."
+
+you_loose = "You loose. The enemy killed you."

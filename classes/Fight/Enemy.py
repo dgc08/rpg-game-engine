@@ -1,12 +1,16 @@
+from GameInstance import GameInstance
 from classes.Interaction import Interaction
 from utils import printText
 from .utils import attack
 from resources.lang import fight
+from ..Item import Item
 
 
 class Enemy(Interaction):
-    def __init__(self, player_hp: int, player_atk: int, name: str, hp: int, atk: int, voicelines: list[str], loop_voicelines = False):
+    def __init__(self, name: str, hp: int, atk: int, voicelines: list[str] = [], loot: list[Item] = [],loop_voicelines = False, player_hp: int = None, player_atk: int = None):
         super(Enemy, self).__init__()
+
+        self.loot = loot
         self.player_atk = player_atk
         self.name = name
         self.loop_voicelines = loop_voicelines
@@ -16,15 +20,23 @@ class Enemy(Interaction):
         self.voicelines = voicelines
 
     def act(self):
+        printText(fight.enemy_attacks.format(**vars(self)))
+        if self.player_hp is None or self.player_atk is None:
+            self.player_hp = GameInstance().player_data["max_hp"]
+            if GameInstance().player_data["selected_weapon"] is None:
+                print(fight.no_weapon)
+                return
+            else:
+                self.player_atk = GameInstance().player_data["selected_weapon"].atk
+
         return self.fight()
 
     def fight(self):
         round = 0
 
-        printText(fight.enemy_attacks.format(**vars(self)))
         while self.player_hp >= 0 and self.hp >= 0:
             if len(self.voicelines) != 0 and (round < len(self.voicelines) or self.loop_voicelines):
-                printText(self.voicelines[round % len(self.voicelines)])
+                printText(f"{self.name}: " + self.voicelines[round % len(self.voicelines)])
 
             # PLAYER_ATTACK
             printText(fight.your_turn.format(**vars(self)))
@@ -74,12 +86,12 @@ class Enemy(Interaction):
             round += 1
         if self.hp <= 0:
             printText(fight.you_won)
-            return True
+            printText(fight.get_loot.format(**vars(self)))
         else:
             printText(fight.you_loose)
-            return False
+            GameInstance().game_over()
 
 
     @staticmethod
     def module_test():
-        Enemy(40, 5, "maballs", 15, 10, ["amabatakaam", "bals"]).act()
+        Enemy("maballs", 15, 10, ["amabatakaam", "bals"], [], False, 40, 5).act()
