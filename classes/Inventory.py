@@ -1,9 +1,10 @@
 import msvcrt
 
+from GameInstance import GameInstance
 from classes.Interaction import Interaction
 from classes.Item import Item
 from classes.Weapon import Weapon
-from resources.lang.sys_constants import inventory_open, inventory_empty
+from resources.lang.sys_constants import inventory_open, inventory_empty, now_equiped
 
 
 class Inventory(Interaction):
@@ -21,11 +22,11 @@ class Inventory(Interaction):
 
         elements = []
         for i in range(len(self.container)):
-            name = self.container[i]
-            if type(i) == Weapon:
-                name += "(WEAPON)"
+            name = str(self.container[i])
+            if type(self.container[i]) == Weapon:
+                name += " (WEAPON)"
             else:
-                name += "(ITEM)"
+                name += " (ITEM)"
 
             if i == position:
                 elements.append(f"[*] {name}")
@@ -37,6 +38,7 @@ class Inventory(Interaction):
 
     def act(self):
         print(inventory_open, "\n")
+        print(now_equiped.format(**vars(GameInstance().player_data["selected_weapon"])), "\n")
         # print(" | ".join(str(obj) for obj in self.player))
         position = 0
 
@@ -57,7 +59,7 @@ class Inventory(Interaction):
                     print()
                     self.container[position].use(self.container)
                 case "e":
-                    print()
+                    print("\n")
 
     @classmethod
     def test(cls):

@@ -5,4 +5,4 @@ class Interaction():
     def act(self):
         pass
     def act_after(self):
-        pass
+        self.act()

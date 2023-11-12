@@ -10,7 +10,7 @@ rooms = [Room([SimpleInteraction("e"),
               # SimpleInteraction("You got stuff hehe", "",
               #                  lambda: (GameInstance().player_data.inventory.append(),
               #                           GameInstance().player_data.inventory.append(Weapon("Weapon 2", 2, 7))))],
-              "stay"),
+              True),
          Room([Enemy("maballs", 15, 10, ["amabatakaam", "bals"])]),
-         Room([SimpleInteraction("You won. Epic; bye bye; its over; just like aot 😢")])
+         Room([SimpleInteraction("You won. Epic; bye bye; its over; just like aot 😢")], True)
          ]

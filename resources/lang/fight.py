@@ -1,4 +1,4 @@
-no_weapon = "You have no weapon equipped, please equip one in the inventory first."
+no_weapon = "\nYou have no weapon equipped, please equip one in the inventory first.\n"
 
 enemy_attacks = "{name} attacks you!\n HP: {hp} | ATK: {atk}\n"
 your_turn = "nweIt's your turn to attack!\n Enemy HP: {hp} | Your ATK: {player_atk}\n"

@@ -7,7 +7,8 @@ from ..Item import Item
 
 
 class Enemy(Interaction):
-    def __init__(self, name: str, hp: int, atk: int, voicelines: list[str] = [], loot: list[Item] = [],loop_voicelines = False, player_hp: int = None, player_atk: int = None):
+    def __init__(self, name: str, hp: int, atk: int, voicelines: list[str] = [], loot: list[Item] = [],
+                 loop_voicelines=False, player_hp: int = None, player_atk: int = None):
         super(Enemy, self).__init__()
 
         self.loot = loot
@@ -21,9 +22,9 @@ class Enemy(Interaction):
 
     def act(self):
         printText(fight.enemy_attacks.format(**vars(self)))
-        if self.player_hp is None or self.player_atk is None:
+        if self.player_hp is None or self.player_atk == None:
             self.player_hp = GameInstance().player_data["max_hp"]
-            if GameInstance().player_data["selected_weapon"] is None:
+            if GameInstance().player_data["selected_weapon"].atk == 0:
                 print(fight.no_weapon)
                 return
             else:
@@ -40,7 +41,7 @@ class Enemy(Interaction):
 
             # PLAYER_ATTACK
             printText(fight.your_turn.format(**vars(self)))
-            dmg_mul = attack() +  1 # From 1-200
+            dmg_mul = attack() + 1  # From 1-200
             if dmg_mul > 20:
                 dmg = 0
             else:
@@ -87,10 +88,10 @@ class Enemy(Interaction):
         if self.hp <= 0:
             printText(fight.you_won)
             printText(fight.get_loot.format(**vars(self)))
+            GameInstance().rooms[GameInstance().room].contents.remove(self)
         else:
             printText(fight.you_loose)
             GameInstance().game_over()
-
 
     @staticmethod
     def module_test():
