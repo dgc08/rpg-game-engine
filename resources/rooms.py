@@ -24,19 +24,19 @@ rooms = [
 
     Room([
         SimpleInteraction("You find a computer terminal. It seems to be password-protected.;"),
-        Item("Note with Code", "drawer", False, lambda: print("You found a note with a code: 'Blue Eagle'."))
+        Item("Note", "drawer. It seems to be important", False, lambda: print("You found a note with a code: 'Gg'."))
     ]),
 
     Room([
         SimpleInteraction("You encounter a guard. He seems suspicious."),
-        Enemy("Suspicious Guard", 15, 10, ["The guard eyes you suspiciously.", "He makes a threatening move."],
+        Enemy("Suspicious Guard", 20, 10, ["The guard eyes you suspiciously.", "He makes a threatening move."],
               [Weapon("a heavy Pistol", 10, "the Guard's corpse")]),
     ]),
 
     Room([
         SimpleInteraction("You reach the main server room. Enter the code to access classified information."),
-        Code("Computer Terminal", "Blue Eagle"),
-    ]),
+        Code("Computer Terminal", "Gg"),
+    ], True),
 
     Room([
         SimpleInteraction(
@@ -44,12 +44,12 @@ rooms = [
         SimpleInteraction(
             "Mysterious Figure: Oh, hello. What are you doing here? ;He turns the lights on; You see, its Mirki, the master behind this organization.; Mirki: You must be an agent from David E-Sports,"),
         SimpleInteraction(
-            "   Stealing information from Mirki E-Sports.; Mirki: You guys are so bad, you are even doing economic espionage!; Cut:1;   OK, then, let's duel in Valorant.;Cut:5;nwenwe")
+            "   Stealing information from Mirki E-Sports.; Mirki: You guys are so bad at playing valorant, you are even doing economic espionage!; Cut:1;   OK, then, let's duel in Valorant.;nwenwe")
     ], True),
     Room([Weapon("a Vandal", 20, "on the ground in Valorant. Make sure to eqiup it, your normal weapons won't do much"),
           Item("a Shield", "on the ground in Valorant. Make sure to use it, or you'll be dead in notime", True,
                set_lives)]),
-    Room([Enemy("Mirki with a Operator", 100, 30,
+    Room([Enemy("Mirki with an Operator", 100, 30,
                 ["I am a Valorant god!! (But pretty nerfed in this game)", "Ha you fool", "Imagine", "Gg", "Gg"], [])],
          True),
 
@@ -74,10 +74,10 @@ rooms = [
         "The oldest known recipe is for beer. It dates back to around 3,900 BCE in ancient Sumeria.",
     ], [Weapon("A terrorists Bomb", 6)], Weapon("An atomic bomb", 696969))], True),
     Room([SimpleInteraction(
-        "The terrorist bomb exploded.; You are fine, but everyone else at Mirki ESports died. Vscause turned out to be an indian terrorist.;"
+        "The terrorist bomb exploded.; You are fine, but everyone else at Mirki ESports died. Vsauce turned out to be an indian terrorist.;"
         "You got a new atomic bomb so you decide to make a retalliation strike on India.;"
         "India is also a nuclear power, so they laünch nukes back on you.But their nukes are bad, so they miss and hit the US, China and Russia.;"
-        "You started nuclear war and humanity went extinct.;THE END;Cut:1;...;Cut:1;Or is it?;Ok no it's the end; bai bai")],
+        "You started nuclear war between major powers. Humanity went extinct.;THE END;Cut:1;...;Cut:1;Or is it?;Ok no it's the end; bai bai uwu")],
          True)
 
 ]

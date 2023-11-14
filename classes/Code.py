@@ -11,6 +11,5 @@ class Code(Enemy):
         if input("Enter code: ") == self.correct:
             print("Access granted.")
             GameInstance().rooms[GameInstance().room].contents.remove(self)
-            GameInstance().continue_room()
         else:
             print("Incorrect code. Try again.")

@@ -36,8 +36,6 @@ class Enemy(Interaction):
         round = 0
 
         while self.player_hp >= 0 and self.hp >= 0:
-            if len(self.voicelines) != 0 and ((round < len(self.voicelines) or self.loop_voicelines)):
-                print(f"{self.name}: " + self.voicelines[round % len(self.voicelines)])
 
             # PLAYER_ATTACK
             printText(fight.your_turn.format(**vars(self)))
@@ -63,6 +61,8 @@ class Enemy(Interaction):
                 break
 
             # ENEMY_ATTACK
+            if len(self.voicelines) != 0 and ((round < len(self.voicelines) or self.loop_voicelines)):
+                print(f"\n\n{self.name}: " + self.voicelines[round % len(self.voicelines)] + "\n\n")
             printText(fight.enemy_turn.format(**vars(self)))
             dodge_efficiency = attack() + 1  # Assume attack() is a function that returns a value from 1 to 200
 
