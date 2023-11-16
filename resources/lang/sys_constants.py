@@ -1,6 +1,6 @@
-prompt = "[c]ontiune to the next room | inter[a]ct with things in the room again | [i]nventory mode | [e]xit> "
+prompt = '\033[96m' + "[c]ontiune to the next room | inter[a]ct with things in the room again | [i]nventory mode | [e]xit> " + "\033[0m"
 
-inventory_open = "Opening Inventory... \nInventory mode activated.\n\nExit with [e], go left and right with [d] and [a] \nuse/activate with [q]"
+inventory_open = '\033[96m' + "Opening Inventory... \nInventory mode activated.\n\nExit with [e], go left and right with [d] and [a] \nuse/activate with [q]" + "\033[0m"
 inventory_empty = "Your inventory is empty."
 
 equip = "You equipped \"{name}\" as your weapon.\n"

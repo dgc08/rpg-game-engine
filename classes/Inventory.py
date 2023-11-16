@@ -24,7 +24,7 @@ class Inventory(Interaction):
         for i in range(len(self.container)):
             name = str(self.container[i])
             if type(self.container[i]) == Weapon:
-                name += " (WEAPON)"
+                name += f" (WEAPON, {self.container[i].atk} ATK)"
             else:
                 name += " (ITEM)"
 

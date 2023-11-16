@@ -21,7 +21,7 @@ class Enemy(Interaction):
         self.voicelines = voicelines
 
     def act(self):
-        printText(fight.enemy_attacks.format(**vars(self)))
+        printText("\033[91m" + fight.enemy_attacks.format(**vars(self)) + "\033[0m")
         if self.player_hp is None or self.player_atk == None:
             self.player_hp = GameInstance().player_data["max_hp"]
             if GameInstance().player_data["selected_weapon"].atk == 0:

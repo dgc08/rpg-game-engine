@@ -47,7 +47,7 @@ class Sys(Interaction.Interaction):
             action = None
             while action != "c":
                 sleep (0.25)
-                print(sys_constants.prompt, end="", flush=True)
+                print(sys_constants.prompt, end='', flush=True)
                 action = msvcrt.getch().decode('utf-8')
                 print("\n",flush=True)
                 match action:
