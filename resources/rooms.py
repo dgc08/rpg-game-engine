@@ -36,7 +36,7 @@ rooms = [
     Room([
         SimpleInteraction("You reach the main server room. Enter the code to access classified information."),
         Code("Computer Terminal", "Gg"),
-    ], True),
+    ]),
 
     Room([
         SimpleInteraction(
