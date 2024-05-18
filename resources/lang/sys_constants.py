@@ -1,4 +1,4 @@
-#enable_rumbling_cheat = True
+enable_rumbling_cheat = True
 
 prompt = '\033[96m' + "[c]ontiune to the next room | inter[a]ct with things in the room again | [i]nventory mode | [e]xit> " + "\033[0m"
 

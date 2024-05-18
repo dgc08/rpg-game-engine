@@ -1,8 +1,9 @@
-import msvcrt
 from time import sleep
+import sys
 
 from GameInstance import GameInstance
 from resources.lang import sys_constants
+from utils import getch
 from . import Interaction
 from resources.rooms import rooms
 from classes.Inventory import Inventory
@@ -31,7 +32,7 @@ class Sys(Interaction.Interaction):
         print(sys_constants.game_over)
         key = None
         while key != "r" and key != "e":
-            key = msvcrt.getch().decode('utf-8')
+            key = getch().decode('utf-8')
 
         if key == "r":
             GameInstance(Sys())
@@ -50,7 +51,7 @@ class Sys(Interaction.Interaction):
             while action != "c":
                 sleep (0.25)
                 print(sys_constants.prompt, end='', flush=True)
-                action = msvcrt.getch().decode('utf-8')
+                action = getch().decode('utf-8')
                 print("\n",flush=True)
                 match action:
                     case "c":
@@ -68,7 +69,7 @@ class Sys(Interaction.Interaction):
             if type(i) == Enemy:
                 if self.tried_continue and getattr(sys_constants, "enable_rumbling_cheat", False):
                     print(sys_constants.there_are_enemies_special)
-                    self.player_data["inventory"].append(Weapon("Founding Titan's power aka. RUMBLING", 6969))
+                    self.player_data["inventory"].append(Weapon("Founding Titan's power aka. RUMBLING", 69696969))
                     self.tried_continue = False
                 else:
                     print(sys_constants.there_are_enemies)

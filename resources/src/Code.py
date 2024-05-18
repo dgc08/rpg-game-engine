@@ -8,7 +8,8 @@ class Code(Enemy):
         self.correct = correct
 
     def act(self):
-        if input("Enter code: ") == self.correct:
+        inp = input("Enter code: ")
+        if inp == self.correct:
             print("Access granted.")
             GameInstance().rooms[GameInstance().room].contents.remove(self)
         else:

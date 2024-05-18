@@ -1,4 +1,5 @@
-import msvcrt
+#import msvcrt
+from utils import kbhit
 import time
 from random import randint
 
@@ -18,7 +19,7 @@ def count_spaces(input_string):
 def get_input_with_timeout(timeout):
     start_time = time.time()
     while True:
-        if msvcrt.kbhit():
+        if kbhit():
             return True
 
         if time.time() - start_time >= timeout:

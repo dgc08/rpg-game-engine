@@ -11,8 +11,7 @@ def set_lives():
     GameInstance().player_data["max_hp"] = 100
 
 
-rooms = [
-    Room([
+rooms = [Room([
         SimpleInteraction("You receive a mission briefing: Infiltrate the high-security compound and gather intel."),
         Weapon("Silenced Pistol", 8)
     ], True),

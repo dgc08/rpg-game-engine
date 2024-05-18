@@ -1,4 +1,5 @@
 from. import Interaction
+import sys
 
 class Room(Interaction.Interaction):
     def __init__(self, contents: list[Interaction], stay=False):

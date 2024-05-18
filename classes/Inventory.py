@@ -1,4 +1,5 @@
-import msvcrt
+#import msvcrt
+from utils import getch
 
 from GameInstance import GameInstance
 from classes.Interaction import Interaction
@@ -45,7 +46,7 @@ class Inventory(Interaction):
         key = None
         while key != "e":
             self.paint_options(position)
-            key = msvcrt.getch().decode('utf-8')
+            key = getch().decode('utf-8')
 
             match key:
                 case "a":
