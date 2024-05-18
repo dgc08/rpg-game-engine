@@ -5,7 +5,7 @@ from GameInstance import GameInstance
 from resources.lang import sys_constants
 from utils import getch
 from . import Interaction
-from resources.rooms import rooms
+import resources.game as user_game
 from classes.Inventory import Inventory
 from .Fight import Enemy
 from .Item import Item
@@ -18,7 +18,7 @@ class Sys(Interaction.Interaction):
         super().__init__()
         self.tried_continue = False
         self.player_data = {}
-        self.rooms = rooms
+        self.rooms = user_game.rooms
         self.room = 0
 
         self.player_data["inventory"] = Inventory()
@@ -26,7 +26,7 @@ class Sys(Interaction.Interaction):
         self.player_data["max_hp"] = 20
         self.been_here = True
 
-        getattr(rooms, "on_start", lambda: None)()
+        self.on_start = getattr(user_game, "on_start", lambda: None)
 
     def game_over(self):
         print(sys_constants.game_over)
@@ -41,6 +41,7 @@ class Sys(Interaction.Interaction):
             exit()
 
     def act(self):
+        self.on_start()
         while self.room != len(self.rooms):
             if self.been_here:
                 ret_sub = self.rooms[self.room].act()

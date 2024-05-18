@@ -1,12 +1,17 @@
-from GameInstance import GameInstance
 from resources.src.Code import Code
+
+from GameInstance import GameInstance
+from utils import printText
 from classes.Fight import Enemy
 from classes.Item import Item
 from classes.Room import Room
 from classes.SimpleInteraction import SimpleInteraction
 from classes.Weapon import Weapon
 
+def on_start():
+    printText ("Hello from RPG text-based game engine. Enjoy the default game!!;")
 
+# Custom Function
 def set_lives():
     GameInstance().player_data["max_hp"] = 100
 
