@@ -1,5 +1,5 @@
 from GameInstance import GameInstance
-from classes.Code import Code
+from resources.src.Code import Code
 from classes.Fight import Enemy
 from classes.Item import Item
 from classes.Room import Room

@@ -25,6 +25,8 @@ class Sys(Interaction.Interaction):
         self.player_data["max_hp"] = 20
         self.been_here = True
 
+        getattr(rooms, "on_start", lambda: None)()
+
     def game_over(self):
         print(sys_constants.game_over)
         key = None
@@ -64,7 +66,7 @@ class Sys(Interaction.Interaction):
         can_forward = True
         for i in self.rooms[self.room].contents:
             if type(i) == Enemy:
-                if self.tried_continue:
+                if self.tried_continue and getattr(sys_constants, "enable_rumbling_cheat", False):
                     print(sys_constants.there_are_enemies_special)
                     self.player_data["inventory"].append(Weapon("Founding Titan's power aka. RUMBLING", 6969))
                     self.tried_continue = False

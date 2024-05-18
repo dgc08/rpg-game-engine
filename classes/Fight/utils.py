@@ -40,7 +40,7 @@ def attack():
         base = base[:i - 1] + '*' + base[i:]
 
         print(base, end='', flush=True)
-        if get_input_with_timeout(0.02):
+        if get_input_with_timeout(0.025):
             return count_spaces(base)
             break
         print('\r' + ' ' * len(base) + '\r', end='', flush=True)
